@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ch-zn">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax测试</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <span id="ajax" style="border: 1px solid gray;padding: 5px 8px;">提交</span>
+    <script>
+        $(function() {
+            $('#ajax').click(function() {
+                $.post('http://localhost:5001/users/user', function(){
+                    console.log(111)
+                })
+            });
+        });
+    </script>
+</body>
+</html>

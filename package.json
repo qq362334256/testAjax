@@ -1,0 +1,22 @@
+{
+  "name": "testAjax",
+  "version": "1.0.0",
+  "description": "测试ajax服务",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qq362334256/testAjax.git"
+  },
+  "author": "miaoyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qq362334256/testAjax/issues"
+  },
+  "homepage": "https://github.com/qq362334256/testAjax#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
