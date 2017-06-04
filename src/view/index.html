@@ -11,13 +11,25 @@
     <span id="ajaxDelete" style="border: 1px solid gray;padding: 5px 8px;">提交Delete</span>
     <script>
         $(function() {
+
+
             // post
             $('#ajaxPost').click(function() {
+                var postData = JSON.stringify({
+                    phone: '18759360126',
+                    password: '111',
+                    code: 1234
+                });
+                console.log(postData)
+
                 $.ajax({
                     url: 'http://localhost:5001/users/user',
                     type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType:"json",
+                    data: postData,
                     success: function(result) {
-                        console.log('post')
+                        console.log(result)
                     }
                 });
             });
@@ -38,6 +50,8 @@
                 $.ajax({
                     url: 'http://localhost:5001/users/userEntry',
                     type: 'DELETE',
+                    contentType:"application/json",
+                    dataType:"json",
                     success: function(result) {
                         console.log('del')
                     }
