@@ -6,12 +6,25 @@
     <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
+    <span id="ajaxGet" style="border: 1px solid gray;padding: 5px 8px;">提交Get</span>
     <span id="ajaxPost" style="border: 1px solid gray;padding: 5px 8px;">提交Post</span>
     <span id="ajaxPut" style="border: 1px solid gray;padding: 5px 8px;">提交Put</span>
     <span id="ajaxDelete" style="border: 1px solid gray;padding: 5px 8px;">提交Delete</span>
     <script>
         $(function() {
-
+            // get
+            $('#ajaxGet').click(function() {
+                $.ajax({
+                    url: 'http://localhost:5001/verCode/phoneCode',
+                    type: 'GET',
+                    data: {
+                        phone: '18759360126'
+                    },
+                    success: function(result) {
+                        console.log(result)
+                    }
+                });
+            });
 
             // post
             $('#ajaxPost').click(function() {
