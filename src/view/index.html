@@ -30,13 +30,11 @@
             $('#ajaxPost').click(function() {
                 var postData = JSON.stringify({
                     phone: '18759360126',
-                    password: '11111111',
-                    code: '6864'
+                    password: '11111111'
                 });
-                console.log(postData)
 
                 $.ajax({
-                    url: 'http://localhost:5001/users/user',
+                    url: 'http://localhost:5001/users/userEntry',
                     type: 'POST',
                     contentType: "application/json; charset=utf-8",
                     dataType:"json",
