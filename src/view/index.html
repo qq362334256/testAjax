@@ -29,18 +29,20 @@
             // post
             $('#ajaxPost').click(function() {
                 var postData = JSON.stringify({
-                    phone: '18759360126',
+                    phone: ' 18759360126',
                     password: '11111111',
-                    code: '3625'
+                    code: ' 8335 '
                 });
 
                 $.ajax({
-                    url: 'http://localhost:5001/users/userEntrya',
+                    url: 'http://localhost:5001/test/debug',
+//                    url: 'http://localhost:5001/users/userEntry',
+//                    url: 'http://localhost:5001/users/user',
                     type: 'POST',
                     contentType: "application/json; charset=utf-8",
                     dataType:"json",
                     beforeSend: function(request) {
-                        request.setRequestHeader("Access-Token", "eyJ0b2tlbklkIjoiNmQ3Mjc2ZGMwYzI3NDNjZTljNTY5MmYyZTMyYWE0ZDciLCJ0eXBlIjoiSldUIiwiaXNzIjoibWlhb3l1LWJhc2ljcyJ9.klnIBz4RficuKIgz0FS851JdKfz3AM/dhGCO6pEwrdU=");
+                        request.setRequestHeader("Access-Token", "eyJ0b2tlbklkIjoiNTVkYmJlOTNiYzExNDk0MWFiNTlkZmNkODc2YzQ3ZmEiLCJ0eXBlIjoiSldUIiwiaXNzIjoibWlhb3l1LWJhc2ljcyJ9.c7dzqcabAJm0wA7Ub990CFAYy68aaedRcDyZGtK+V5I=");
                     },
                     data: postData,
                     success: function(result) {
