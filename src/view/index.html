@@ -30,14 +30,18 @@
             $('#ajaxPost').click(function() {
                 var postData = JSON.stringify({
                     phone: '18759360126',
-                    password: '11111111'
+                    password: '11111111',
+                    code: '3625'
                 });
 
                 $.ajax({
-                    url: 'http://localhost:5001/users/userEntry',
+                    url: 'http://localhost:5001/users/userEntrya',
                     type: 'POST',
                     contentType: "application/json; charset=utf-8",
                     dataType:"json",
+                    beforeSend: function(request) {
+                        request.setRequestHeader("Access-Token", "eyJ0b2tlbklkIjoiNmQ3Mjc2ZGMwYzI3NDNjZTljNTY5MmYyZTMyYWE0ZDciLCJ0eXBlIjoiSldUIiwiaXNzIjoibWlhb3l1LWJhc2ljcyJ9.klnIBz4RficuKIgz0FS851JdKfz3AM/dhGCO6pEwrdU=");
+                    },
                     data: postData,
                     success: function(result) {
                         console.log(result)
