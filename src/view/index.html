@@ -31,18 +31,18 @@
                 var postData = JSON.stringify({
                     phone: ' 18759360126',
                     password: '11111111',
-                    code: ' 8335 '
+                    code: ' 1600 '
                 });
 
                 $.ajax({
-                    url: 'http://localhost:5001/test/debug',
-//                    url: 'http://localhost:5001/users/userEntry',
+//                    url: 'http://localhost:5001/test/debug',
+                    url: 'http://localhost:5001/users/userEntry',
 //                    url: 'http://localhost:5001/users/user',
                     type: 'POST',
                     contentType: "application/json; charset=utf-8",
                     dataType:"json",
                     beforeSend: function(request) {
-                        request.setRequestHeader("Access-Token", "eyJ0b2tlbklkIjoiNTVkYmJlOTNiYzExNDk0MWFiNTlkZmNkODc2YzQ3ZmEiLCJ0eXBlIjoiSldUIiwiaXNzIjoibWlhb3l1LWJhc2ljcyJ9.c7dzqcabAJm0wA7Ub990CFAYy68aaedRcDyZGtK+V5I=");
+//                        request.setRequestHeader("Access-Token", "eyJ0b2tlbklkIjoiNDQ4ZmQwMWFmMjNiNGYxOGJhZjQyMzZiNTAyZjkyZDgiLCJ0eXBlIjoiSldUIiwiaXNzIjoibWlhb3l1LWJhc2ljcyJ9.4F+Fbj4c/Bl4qOkYeStiCsWMTEtpm5X2TL8ySfjKDJU=");
                     },
                     data: postData,
                     success: function(result) {
@@ -69,6 +69,14 @@
                     type: 'DELETE',
                     contentType:"application/json",
                     dataType:"json",
+                    data: JSON.stringify({
+                        phone: ' 18759360126',
+                        password: '11111111',
+                        code: ' 8335 '
+                    }),
+                    beforeSend: function(request) {
+                        request.setRequestHeader("Access-Token", "eyJ0b2tlbklkIjoiNDQ4ZmQwMWFmMjNiNGYxOGJhZjQyMzZiNTAyZjkyZDgiLCJ0eXBlIjoiSldUIiwiaXNzIjoibWlhb3l1LWJhc2ljcyJ9.4F+Fbj4c/Bl4qOkYeStiCsWMTEtpm5X2TL8ySfjKDJU=");
+                    },
                     success: function(result) {
                         console.log('del')
                     }
