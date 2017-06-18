@@ -10,8 +10,109 @@
     <span id="ajaxPost" style="border: 1px solid gray;padding: 5px 8px;">提交Post</span>
     <span id="ajaxPut" style="border: 1px solid gray;padding: 5px 8px;">提交Put</span>
     <span id="ajaxDelete" style="border: 1px solid gray;padding: 5px 8px;">提交Delete</span>
+    <div style="margin-top: 50px;">
+        <span id="getCode" style="border: 1px solid gray;padding: 5px 8px;">获取验证码</span>
+        <input id="code" type="text" placeholder="请输入验证码">
+        <span id="registered" style="border: 1px solid gray;padding: 5px 8px;">注册</span>
+        <span id="login"style="border: 1px solid gray;padding: 5px 8px;">登录</span>
+        <span id="refresh"style="border: 1px solid gray;padding: 5px 8px;">刷新登录</span>
+        <span id="logout" style="border: 1px solid gray;padding: 5px 8px;">退出</span>
+    </div>
     <script>
         $(function() {
+            // 获取验证码
+            $('#getCode').click(function() {
+                $.ajax({
+                    url: 'http://localhost:5001/verCode/phoneCode',
+                    type: 'GET',
+                    data: {
+                        phone: '     18759360126 '
+                    },
+                    success: function(result) {
+                        console.log(result)
+                    }
+                });
+            });
+
+            // 注册
+            $('#registered').click(function() {
+                console.log(typeof $('#code').val())
+                var postData = JSON.stringify({
+                    phone: '      18759360126       ',
+                    password: '11111111',
+                    code: $('#code').val()
+                });
+
+                $.ajax({
+                    url: 'http://localhost:5001/users/user',
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType:"json",
+                    data: postData,
+                    success: function(result) {
+
+                        console.log(result)
+                    }
+                });
+            })
+
+            // 登录
+            $('#login').click(function() {
+                var postData = JSON.stringify({
+                    phone: ' 18759360126               ',
+                    password: '11111111'
+                });
+
+                $.ajax({
+                    url: 'http://localhost:5001/users/userEntry',
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType:"json",
+                    data: postData,
+                    success: function(result) {
+                        localStorage.token = result.data.token;
+                        console.log(result)
+                    }
+                });
+            })
+
+            // 刷新登录
+            $('#refresh').click(function() {
+                $.ajax({
+                    url: 'http://localhost:5001/users/userEntry',
+                    type: 'PUT',
+                    contentType:"application/json",
+                    dataType:"json",
+                    data: JSON.stringify({}),
+                    beforeSend: function(request) {
+                        request.setRequestHeader("Access-Token", localStorage.token);
+                    },
+                    success: function(result) {
+                        console.log(result)
+                    }
+                });
+            });
+
+            // 退出登录
+            $('#logout').click(function() {
+                $.ajax({
+                    url: 'http://localhost:5001/users/userEntry',
+                    type: 'DELETE',
+                    contentType:"application/json",
+                    dataType:"json",
+                    data: JSON.stringify({}),
+                    beforeSend: function(request) {
+                        request.setRequestHeader("Access-Token", localStorage.token);
+                    },
+                    success: function(result) {
+                        console.log(result)
+                    }
+                });
+            });
+
+
+
+
             // get
             $('#ajaxGet').click(function() {
                 $.ajax({
